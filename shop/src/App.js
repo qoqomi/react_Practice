@@ -1,9 +1,15 @@
-import logo from "./logo.svg";
 import "./App.css";
 //button 부트스트랩
 import { Button, Container, Navbar, Nav, Row, Col } from "react-bootstrap";
 import mainColor from "./img/mainColor.jpeg";
+import styled from "styled-components";
+import { useState } from "react";
+//
+import data from "./data";
+import ShoesMain from "./ShoesMain";
+
 function App() {
+  let [shoes] = useState(data);
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
@@ -17,17 +23,15 @@ function App() {
         </Container>
       </Navbar>
       <img className="main-bg" src={mainColor} alt="mainColor"></img>
-      <Row>
-        <Col>
-          <img src="https://codingapple1.github.io/shop/shoes1.jpg"></img>
-          <h4>상품명</h4>
-          <p>상품설명</p>
-        </Col>
-        <Col>2 of 3</Col>
-        <Col>3 of 3</Col>
-      </Row>
+      <div>
+        <ShoesMain shoes={shoes}></ShoesMain>
+      </div>
     </div>
   );
 }
-
+const YellowBtn = styled.button`
+  background-color: ${(props) => props.hello};
+  color: black;
+  padding: 10px;
+`;
 export default App;
